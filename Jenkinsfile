@@ -10,7 +10,7 @@ pipeline {
       steps {
         git 'https://github.com/pkamalakannanp/myweb-kubernetesapp'
         script{
-                sh "index.html"
+            "index.html"
         }
       }
     }
