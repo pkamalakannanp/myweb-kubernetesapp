@@ -9,9 +9,6 @@ pipeline {
     stage('Compile') {
       steps {
         git 'https://github.com/pkamalakannanp/myweb-kubernetesapp'
-        script{
-             "index.html"
-        }
       }
     }
     stage('Building Docker Image') {
