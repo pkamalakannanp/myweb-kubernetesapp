@@ -6,6 +6,14 @@ pipeline {
   }
   agent any
   stages {
+    stage('Compile') {
+      steps {
+        git 'https://github.com/pkamalakannanp/myweb-kubernetesapp'
+        script{
+                sh "index.html"
+        }
+      }
+    }
     stage('Building Docker Image') {
       steps{
         script {
