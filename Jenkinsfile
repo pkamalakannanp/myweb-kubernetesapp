@@ -33,8 +33,9 @@ pipeline {
     }
     stage('Deploy to Kubernetes'){
         steps{
-          script    
+          script{    
             kubernetesDeploy(configs: "deployment.yaml", kubeconfigId: "mykubeconfignew")
+          }  
        }
     }
   }
