@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    registry = "kamal0405/cicd-k8s-demo-1"
+    registry = "kamal0405/cicd-k8s-demo-html"
     registryCredential = 'docker_credentials'
     dockerImage = ''
   }
@@ -26,7 +26,7 @@ pipeline {
                    * Second, the 'latest' tag.
                    * Pushing multiple tags is cheap, as all the layers are reused. */
           docker.withRegistry('https://registry.hub.docker.com', 'docker_credentials') {
-              dockerImage.push("${BUILD_NUMBER}")
+              dockerImage.push()
               dockerImage.push("latest")
           }
         }
