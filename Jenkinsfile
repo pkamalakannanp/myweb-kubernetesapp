@@ -1,17 +1,14 @@
 pipeline {
   environment {
-    registry = "kamal0405/cicd-k8s-demo"
-    registryCredential = 'Docker Credentials'
+    registry = "kamal0405/cicd-k8s-demo-1"
+    registryCredential = 'docker_credentials'
     dockerImage = ''
   }
   agent any
   stages {
-    stage('Compile') {
+    stage('Checkout Source') {
       steps {
         git 'https://github.com/pkamalakannanp/myweb-kubernetesapp'
-        script{
-            "index.html"
-        }
       }
     }
     stage('Building Docker Image') {
@@ -28,7 +25,7 @@ pipeline {
                    * First, the incremental build number from Jenkins
                    * Second, the 'latest' tag.
                    * Pushing multiple tags is cheap, as all the layers are reused. */
-          docker.withRegistry('https://registry.hub.docker.com', 'Docker Credentials') {
+          docker.withRegistry('https://registry.hub.docker.com', 'docker_redentials') {
               dockerImage.push("${env.BUILD_NUMBER}")
               dockerImage.push("latest")
           }
