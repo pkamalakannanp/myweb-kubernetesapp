@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    registry = "kamal0405/cicd-k8s-demo-html"
+    registry = "kamal0405/html-new"
     registryCredential = 'docker_credentials'
     dockerImage = ''
   }
@@ -36,6 +36,7 @@ pipeline {
         steps{
           withKubeConfig([credentialsId: 'mykubeconfignew', serverUrl: '']) {
             powershell 'kubectl apply -f deployment.yaml'
+          }
        }
     }
   }

@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: myweb-container
-        image: docker.io/kamal0405/cicd-k8s-demo-html:latest
+        image: docker.io/kamal0405/html-new:latest
         resources:
           limits:
             memory: "128Mi"
@@ -24,7 +24,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: myweb
+  name: myweb-service
 spec:
   selector:
     app: myweb
