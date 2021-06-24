@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Checkout Source') {
       steps {
-        git 'https://github.com/pkamalakannanp/myweb-kubernetesapp'
+        git 'https://github.com/pkamalakannanp/myweb-kubernetesapp.git'
       }
     }
     stage('Building Docker Image') {
@@ -34,7 +34,7 @@ pipeline {
     }
     stage('Deploy to Kubernetes'){
         steps{
-             withKubeConfig([credentialsId: 'mykubeconfignew', serverUrl: '']) {
+          withKubeConfig([credentialsId: 'mykubeconfignew', serverUrl: '']) {
             powershell 'kubectl apply -f deployment.yaml'
        }
     }
