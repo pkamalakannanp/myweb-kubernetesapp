@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: myhtml-container
-        image: docker.io/kamal0405/cicd-html-demo:latest
+        image: docker.io/kamal0405/test-html-cicd:latest
         resources:
           limits:
             memory: "128Mi"
