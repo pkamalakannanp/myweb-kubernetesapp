@@ -36,6 +36,7 @@ pipeline {
         steps{
           withKubeConfig([credentialsId: 'mykubeconfignew', serverUrl: '']) {
             powershell 'kubectl apply -f deployment.yaml'
+            powershell 'kubectl rollout restart deployment myhtml-service'
           }
        }
     }
