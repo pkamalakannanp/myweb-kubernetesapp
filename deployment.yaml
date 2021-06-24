@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: myweb-deploy
+  name: myhtml-deploy
 spec:
   selector:
     matchLabels:
-      app: myweb
+      app: myhtml
   template:
     metadata:
       labels:
-        app: myweb
+        app: myhtml
     spec:
       containers:
-      - name: myweb-container
+      - name: myhtml-container
         image: docker.io/kamal0405/html-new:latest
         resources:
           limits:
@@ -24,10 +24,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: myweb-service
+  name: myhtml-service
 spec:
   selector:
-    app: myweb
+    app: myhtml
   ports:
   - port: 8080
     targetPort: 8080
