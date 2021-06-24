@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    registry = "kamal0405/html-new"
+    registry = "kamal0405/cicd-html-demo"
     registryCredential = 'docker_credentials'
     dockerImage = ''
   }
