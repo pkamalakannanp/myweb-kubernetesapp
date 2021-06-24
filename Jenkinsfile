@@ -1,10 +1,6 @@
 pipeline {
   environment {
-<<<<<<< HEAD
-    registry = "kamal0405/kamal0405/cicd-k8s-demo-html"
-=======
     registry = "kamal0405/cicd-k8s-demo-html"
->>>>>>> 67ca1ea6e16f570525768db9e6300c6b6ab0bc6c
     registryCredential = 'docker_credentials'
     dockerImage = ''
   }
@@ -29,22 +25,17 @@ pipeline {
                    * First, the incremental build number from Jenkins
                    * Second, the 'latest' tag.
                    * Pushing multiple tags is cheap, as all the layers are reused. */
-          docker.withRegistry('https://registry.hub.docker.com', 'docker_credentials') {
-              dockerImage.push()
+          docker.withRegistry('https://registry.hub.docker.com', 'docker_redentials') {
+              dockerImage.push("${env.BUILD_NUMBER}")
+              dockerImage.push("latest")
           }
         }
       }
     }
     stage('Deploy to Kubernetes'){
         steps{
-<<<<<<< HEAD
           withKubeConfig([credentialsId: 'mykubeconfignew', serverUrl: '']) {
             powershell 'kubectl apply -f deployment.yaml'
-=======
-          script{    
-            kubernetesDeploy(configs: "deployment.yaml", kubeconfigId: "mykubeconfignew")
-          }  
->>>>>>> 67ca1ea6e16f570525768db9e6300c6b6ab0bc6c
        }
     }
   }
